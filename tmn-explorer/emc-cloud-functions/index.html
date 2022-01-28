@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>Home</title>
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="wrapper site-header__wrapper">
+                <div class="site-header__start">
+                    <img src="https://www.original-digital.co.uk/wp-content/uploads/2021/01/od-logo-300x87-1.png" width="200" height="58" alt="Original Digital Ltd" id="logo" data-height-percentage="54" data-actual-width="300" data-actual-height="87">
+                    <h2>eMC Cloud Management</h2>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div><h2>Actions</h2></div>
+            <div id="contractDetail">
+                <li><a onclick="updateCompanies()">update companies</a>   | |   <a onclick="cleanCompanies()">clean companies</a></li>
+                <br/><br/>
+                <li><a onclick="updateContent()">update content</a>   | |   <a onclick="cleanContent()">clean content</a></li>
+                <br/><br/>
+                <li><a onclick="updateProducts()">update products</a>   | |   <a onclick="cleanProducts()">clean products</a></li>
+                <br/><br/>
+                <li><a onclick="updateMaps()">update maps</a>   | |   <a onclick="cleanMaps()">clean maps</a></li>
+                <br/><br/>                
+            </div>
+        </div>
+
+        <div>
+            <p>Moralis</p>
+            <p>moralis-admin-cli watch-cloud-folder --moralisApiKey VIapKht08QROlH6 --moralisApiSecret QCu5ORcQamNs20o --moralisSubdomain bwgr6dvbhyek.usemoralis.com --autoSave 1 --moralisCloudfolder ~/source/repos/o-d/emc-cloud-functions/functions</p>
+        </div>
+
+        <script src="common.js"></script>
+        
+    </body>
+</html>

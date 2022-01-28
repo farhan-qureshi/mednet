@@ -1,0 +1,234 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <title>Product Details</title>
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>        
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="wrapper site-header__wrapper">
+                <div class="site-header__start">
+                    <img src="https://www.original-digital.co.uk/wp-content/uploads/2021/01/od-logo-300x87-1.png" width="200" height="58" alt="Original Digital Ltd" id="logo" data-height-percentage="54" data-actual-width="300" data-actual-height="87">
+                    <p>
+                        <span class="application-heading">mi-manager</span>                    
+                    </p>
+                </div>
+                <div class="site-header__middle">
+                    <nav class="nav">
+                        <ul class="nav__wrapper">
+                            <li class="nav__item"><a class="top-nav-menu" href="index.html">Home</a></li>
+                            <li class="nav__item"><a class="top-nav-menu" href="browse-products.html"><h3 style="border-bottom: 1px solid #3B4D8F; padding:20px;">Manage Products</h3></a></li>
+                            <li class="nav__item"><a class="top-nav-menu" href="browse-content.html">Manage Content</a></li>
+                            <li class="nav__item"><a class="top-nav-menu" id="btn-logout" href="index.html" onclick="logout();">Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="site-header__end">
+                    <div id="site-header-end" style="border-radius: 10px; box-shadow: 1px 0px 10px -3px white; padding: 2px; text-align: center;">
+                        <p>
+                            <img id="img-companyLogoUri" src="" width="110" height="80" />
+                        </p>
+                        <p style="width: 230px; height: 10px;">
+                            <label style="font-weight: bold; color:yellow;" id="lbl-loggedincompany"></label>
+                        </p>
+                        <p class="current-info"><label id="lbl-loggedinuser"></label></p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container-medium">
+            <div id="div-view-product" class="section-main">
+                <div class="responsive-table">
+                    <span class="create-heading">Product Details</span>
+                    <div class="form-inner" id="form-inner-fields">
+                        <div id="view-product-readonly">
+                            <table>
+                                <tr>
+                                    <td class="td-min-width">
+                                        <span class="label-form-heading">Status</span>
+                                    </td>
+                                    <td>
+                                        <span class="label-form-data" id="ro-productStatus"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="td-min-width">
+                                        <span class="label-form-heading">Product Name</span>
+                                    </td>
+                                    <td>
+                                        <span id="ro-productName" class="label-form-data"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label-form-heading">Generics</span>
+                                    </td>
+                                    <td>
+                                        <span id="ro-productGenerics" class="label-form-data"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label-form-heading">Marketing Authorisation Number</span>
+                                    </td>
+                                    <td>
+                                        <span id="ro-productMan" class="label-form-data"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label-form-heading">Date of Authorisation</span>
+                                    </td>
+                                    <td>
+                                        <span id="ro-productDateOfAuth" class="label-form-data"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label-form-heading">Is subject to further monitoring?</span>
+                                    </td>
+                                    <td>
+                                        <input class="chk-basic" type="checkbox" id="ro-productMonitoring" >
+                                        <span class="label-basic">(Black triangle)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label-form-heading">Authorised for use in</span>
+                                    </td>
+                                    <td>
+                                        <select id="ro-productCountries" class="input-basic" disabled>
+                                            <option value="UK" selected>United Kingdom</option>
+                                            <option value="DE">Germany</option>
+                                            <option value="ES">Spain</option>
+                                            <option value="FR">France</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="view-product-editable" style="display: none;">
+                            <table>
+                                <tr>
+                                    <td class="td-min-width">
+                                        <span class="label-form-heading">Status</span>
+                                    </td>
+                                    <td>
+                                        <span id="productStatus" class="label-basic"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="td-min-width">
+                                        <span class="label-form-heading">Product Name</span>
+                                    </td>
+                                    <td>
+                                        <input class="input-basic" type="text" name="" id="productName">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label-form-heading">Generics</span>
+                                    </td>
+                                    <td>
+                                        <input class="input-basic" type="text" name="" id="productGenerics">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label-form-heading">Marketing Authorisation Number</span>
+                                    </td>
+                                    <td>
+                                        <input class="input-basic" type="text" name="" id="productMan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label-form-heading">Date of Authorisation</span>
+                                    </td>
+                                    <td>
+                                        <input class="input-basic" type="text" name="" id="productDateOfAuth">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label-form-heading">Is subject to further monitoring?</span>
+                                    </td>
+                                    <td>
+                                        <input class="chk-basic" type="checkbox" id="productMonitoring" >
+                                        <span class="label-basic">(Black triangle)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label-form-heading">Authorised for use in</span>
+                                    </td>
+                                    <td>
+                                        <select id="productCountries" class="input-basic">
+                                            <option value="UK" selected>United Kingdom</option>
+                                            <option value="DE">Germany</option>
+                                            <option value="ES">Spain</option>
+                                            <option value="FR">France</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div>
+                            <table>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button id="btn-edit-product" onclick="makeEditable();">Edit</button>
+                                        <button id="btn-cancel-product" onclick="makeUnEditable();">Cancel Edit</button>
+                                        <button id="btn-approve-product" onclick="approveProduct();">Approve</button>
+                                        <button id="btn-retire-product" onclick="removeProduct();">Retire</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+
+        <div id="content-section" style="display: none;" class="container-medium">
+            <h5 id="view-product-contents">No content has been assigned to this product. Click 'Edit Mappings' to assign content</h5>
+            <div id="div-view-product" class="section-main">
+                <div class="responsive-table">
+                    <span class="create-heading">Contents</span>
+                    <div style="clear: both;"></div>
+                    <div class="form-inner" id="product-contents-body">
+                        <div style="float: right;">
+                            <table style="float: right;">
+                                <tr>
+                                    <td>
+                                        <button id="btn-edit-mappings" onclick="handleEditMappingsClick();">Edit Mappings</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-content">
+                <table>
+                    <tr>
+                        <td class="table-cell-content">
+                            the.medicines.network Explorer - &copy;2022 - Original Digital Ltd. Certified service provider by
+                        </td>
+                        <td style="text-align: left;">
+                            <a href="index.html"><img src="/data-management/images/mednet.png"/></a> 
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="common.js"></script>
+        <script src="view-product.js"></script>
+    </body>
+</html>

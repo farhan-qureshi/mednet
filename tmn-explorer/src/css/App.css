@@ -1,0 +1,19 @@
+.site-layout-content {
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
+}
+.logo {
+  float: left;
+  width: 200px;
+}
+.gutter-box {
+  padding: 8px 0;
+  background: #00a0e9;
+}
+.logoReplacement {
+  color: #fff;
+  font-size: 30px;
+  float: left;
+  width: 400px;
+}

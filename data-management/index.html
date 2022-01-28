@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <title>Home</title>
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>        
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="wrapper site-header__wrapper">
+                <div class="site-header__start">
+                    <img src="https://www.original-digital.co.uk/wp-content/uploads/2021/01/od-logo-300x87-1.png" width="200" height="58" alt="Original Digital Ltd" id="logo" data-height-percentage="54" data-actual-width="300" data-actual-height="87">
+                    <p>
+                        <span class="application-heading">mi-manager</span>                    
+                    </p>
+                </div>
+                <div class="site-header__middle">
+                    <nav class="nav">
+                        <ul class="nav__wrapper">
+                            <li class="nav__item"><a class="top-nav-menu" href="index.html"><h3 style="border-bottom: 1px solid #3B4D8F; padding:20px;">Home</h3></a></li>
+                            <li class="nav__item"><a class="top-nav-menu" href="browse-products.html">Manage Products</a></li>
+                            <li class="nav__item"><a class="top-nav-menu" href="browse-content.html">Manage Content</a></li>
+                            <li class="nav__item"><a class="top-nav-menu" id="btn-logout" href="index.html" onclick="logout();">Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="site-header__end">
+                    <div id="site-header-end" style="border-radius: 10px; box-shadow: 1px 0px 10px -3px white; padding: 2px; text-align: center;">
+                        <p>
+                            <img id="img-companyLogoUri" src="" width="110" height="80" />
+                        </p>
+                        <p style="width: 230px; height: 10px;">
+                            <label style="font-weight: bold; color:yellow;" id="lbl-loggedincompany"></label>
+                        </p>
+                        <p class="current-info"><label id="lbl-loggedinuser"></label></p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="div-login" class="container-medium">
+            <div class="responsive-table">
+                <div class="form-inner">
+                    <table>
+                        <tr>
+                            <td class="td-min-width">
+                                <span>Username or Email</span>
+                            </td>
+                            <td>
+                                <input type="email" id="email">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Password</span>
+                            </td>
+                            <td>
+                                <input type="password" id="password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <button id="btn-login-classic" onclick="loginClassic(document.getElementById('email').value, document.getElementById('password').value)" class="form-button">Login</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="div-loggedin" class="container">
+            <!-- <h1>Dashboard</h1> -->
+            <table width="100%">
+                <!-- <tr style="float: left;">
+                    <td><h2>Dashboard</h2></td>
+                </tr> -->
+                <tr>
+                    <td>
+                        <div>
+                            <div class="form-inner-dashboard-catchy">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <span class="span-dashboard">
+                                                <h3>Product Manager</h3>
+                                                <b>
+                                                    <a href="add-product.html">Click Here </a> 
+                                                </b>
+                                                to create new Product Information for your medicine
+                                                <p><b>Your products</b>
+                                                <ul>
+                                                    <li>123 Unique products</li>
+                                                    <li>4 pending updates</li>
+                                                </ul></p>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div class="form-inner-dashboard-catchy">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <span class="span-dashboard">
+                                                <h3>Content Manager</h3>
+                                                <b>
+                                                    <a href="add-content.html">Click Here </a> 
+                                                </b>
+                                                to quickly upload new content about a medicine
+                                                <p><b>Your content</b>
+                                                <ul>
+                                                    <li>200 documents</li>
+                                                    <li>14 pending updates</li>
+                                                </ul></p>
+                                            </span>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div>
+                            <div class="form-inner-dashboard">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <h3>What is the.medicines.network?</h3>
+                                            <span class="span-dashboard">
+                                                <b>the.medicines.network</b> is a platform to allow access to up-to-date and accurate medicinal products information using state-of-the-art decentralised technologies like blockchain and web3.
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div class="form-inner-dashboard">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <h3>What is mi-manager?</h3>
+                                            <span class="span-dashboard">
+                                                mi-manager offers a simple and intuitive way to manage your content on <b>the.medicines.network</b>. Using mi-manager you can add, update or remove content, and control who can perform these functions. 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <div class="form-inner-dashboard">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <h3>Support the community?</h3>
+                                            <span class="span-dashboard">
+                                                Make your vote count. As a content provider to <b>the.medicines.network</b> you can control at a granular level and influence who has access to your public-facing data.
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div class="form-inner-dashboard">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <h3>Own your data. Get insights</h3>
+                                            <span class="span-dashboard">
+                                                You are the owner of your data. You should know who has access, what they're doing it and when they're doing it. Insights come as standard on <b>the.medicines.network</b> as part of a contractual obligation.  
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>                
+            </table>
+        </div>
+        <div class="footer">
+            <div class="footer-content">
+                <table>
+                    <tr>
+                        <td class="table-cell-content">
+                            the.medicines.network Explorer - &copy;2022 - Original Digital Ltd. Certified service provider by
+                        </td>
+                        <td style="text-align: left;">
+                            <a href="index.html"><img src="/data-management/images/mednet.png"/></a> 
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="common.js"></script>
+    </body>
+</html>

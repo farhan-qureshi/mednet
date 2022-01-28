@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <title>Create Pharmaceutical Company</title>
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/nft.storage/dist/bundle.esm.min.js"></script>
+    </head>
+
+    <body>
+        <header class="site-header">
+            <div class="wrapper site-header__wrapper">
+                <div class="site-header__start">
+                    <img src="https://www.original-digital.co.uk/wp-content/uploads/2021/01/od-logo-300x87-1.png" width="200" height="58" alt="Original Digital Ltd" id="logo" data-height-percentage="54" data-actual-width="300" data-actual-height="87">
+                    <p>
+                        <span class="application-heading">mi-manager</span>                    
+                    </p>
+                </div>
+                <div class="site-header__middle">
+                    <nav class="nav">
+                        <ul class="nav__wrapper">
+                            <li class="nav__item"><a class="top-nav-menu" href="index.html">Home</a></li>
+                            <li class="nav__item"><a class="top-nav-menu" href="browse-products.html">Manage Products</a></li>
+                            <li class="nav__item"><a class="top-nav-menu" href="browse-content.html"><h3 style="border-bottom: 1px solid #3B4D8F; padding:20px;">Manage Content</h3></a></li>
+                            <li class="nav__item"><a class="top-nav-menu" id="btn-logout" href="index.html" onclick="logout();">Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="site-header__end">
+                    <div id="site-header-end" style="border-radius: 10px; box-shadow: 1px 0px 10px -3px white; padding: 2px; text-align: center;">
+                        <p>
+                            <img id="img-companyLogoUri" src="" width="110" height="80" />
+                        </p>
+                        <p style="width: 230px; height: 10px;">
+                            <label style="font-weight: bold; color:yellow;" id="lbl-loggedincompany"></label>
+                        </p>
+                        <p class="current-info"><label id="lbl-loggedinuser"></label></p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container-medium">
+            <div id="div-add-content" class="section-main">
+                <div class="responsive-table">
+                    <span class="create-heading">Create Content</span>
+                    <div class="form-inner">
+                        <div id="div-upload-content">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <span>Title</span>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="contentName">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>Type</span>
+                                    </td>
+                                    <td>
+                                        <select id="contentType">
+                                            <option value="SmPC" selected>SmPC</option>
+                                            <option value="PIL">PIL</option>
+                                            <option value="RMM">RMM</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>Date of Last Update</span>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="contentDateOfLastUpdate">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>Language</span>
+                                    </td>
+                                    <td>
+                                        <select id="contentLanguage">
+                                            <option value="English" selected>English</option>
+                                            <option value="German">German</option>
+                                            <option value="Spanish">Spanish</option>
+                                            <option value="French">French</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>Uploaded Document</span>
+                                    </td>
+                                    <td>
+                                        <input type="file" id="file">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <button id="btn-save-content" onclick="saveContent();">Save</button>
+                                        <button id="btn-upload-content">Upload</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-content">
+                <table>
+                    <tr>
+                        <td class="table-cell-content">
+                            the.medicines.network Explorer - &copy;2022 - Original Digital Ltd. Certified service provider by
+                        </td>
+                        <td style="text-align: left;">
+                            <a href="index.html"><img src="/data-management/images/mednet.png"/></a> 
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <script src="common.js"></script>
+
+        <pre id="out"></pre>
+        <script type="module">
+            import { NFTStorage } from 'https://cdn.jsdelivr.net/npm/nft.storage/dist/bundle.esm.min.js'
+        
+            const token =
+            new URLSearchParams(window.location.search).get('key') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDgzNzQ1YjI3Y2VlN2M1OUYxNWRlRUIxMEREZTU0NzZlRWMyNkI4MDgiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY0MzAyNTY0ODg0MywibmFtZSI6Im9ka2V5In0.Bj7v87ZDnUjhzyzcp7JnKgFT_4kfl9X33znIXb50738'
+
+            const storage = new NFTStorage({ token })
+        
+            function log(msg) {
+                msg = JSON.stringify(msg, null, 2)
+                document.getElementById('out').innerHTML += `${msg}\n`
+            }
+        
+            async function upload() {
+                const fileInput = document.getElementById("file");
+                try {
+                    const metadata = await storage.store({
+                        name: 'content-file',
+                        description: 'Using the nft.storage metadata API to create ERC-1155 compatible metadata.',
+                        image: fileInput.files[0]
+                    })
+
+                    contentURI = metadata.embed().image.href;
+                } catch (err) {
+                    console.error(err)
+                    log(err.message)
+                }
+
+                document.getElementById("btn-upload-content").style.display = "none";
+                document.getElementById("btn-save-content").style.display = "block";
+            }
+
+            document.getElementById('btn-upload-content').onclick = () => upload();
+        </script>        
+        <script src="add-content.js"></script>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <title>Home</title>
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>        
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="wrapper site-header__wrapper">
+                <div class="site-header__start">
+                    <img src="https://www.original-digital.co.uk/wp-content/uploads/2021/01/od-logo-300x87-1.png" width="200" height="58" alt="Original Digital Ltd" id="logo" data-height-percentage="54" data-actual-width="300" data-actual-height="87">
+                    <p>
+                        <span class="application-heading">mi-manager</span>                    
+                    </p>
+                </div>
+                <div class="site-header__middle">
+                    <nav class="nav">
+                        <ul class="nav__wrapper">
+                            <li class="nav__item"><a class="top-nav-menu" href="index.html">Home</a></li>
+                            <li class="nav__item"><a class="top-nav-menu" href="browse-products.html"><h3 style="border-bottom: 1px solid #3B4D8F; padding:20px;">Manage Products</h3></a></li>
+                            <li class="nav__item"><a class="top-nav-menu" href="browse-content.html">Manage Content</a></li>
+                            <li class="nav__item"><a class="top-nav-menu" id="btn-logout" href="index.html" onclick="logout();">Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="site-header__end">
+                    <div id="site-header-end" style="border-radius: 10px; box-shadow: 1px 0px 10px -3px white; padding: 2px; text-align: center;">
+                        <p>
+                            <img id="img-companyLogoUri" src="" width="110" height="80" />
+                        </p>
+                        <p style="width: 230px; height: 10px;">
+                            <label style="font-weight: bold; color:yellow;" id="lbl-loggedincompany"></label>
+                        </p>
+                        <p class="current-info"><label id="lbl-loggedinuser"></label></p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div id="div-dashboard">
+                <div>
+                    <h2 class="main-heading">Mappings</h2>
+                </div>
+                <ul class="responsive-table">
+                    <li class="table-header">
+                        <div class="col col-1">Product Id</div>
+                        <div class="col col-2">Product Name</div>
+                        <div class="col col-3">Content</div>
+                    </li>
+                    <div class="table-rows" id="published-body">
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-content">
+                <table>
+                    <tr>
+                        <td class="table-cell-content">
+                            the.medicines.network Explorer - &copy;2022 - Original Digital Ltd. Certified service provider by
+                        </td>
+                        <td style="text-align: left;">
+                            <a href="index.html"><img src="/data-management/images/mednet.png"/></a> 
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="common.js"></script>
+        <script src="browse-mappings.js"></script>
+    </body>
+</html>

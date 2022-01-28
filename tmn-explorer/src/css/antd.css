@@ -1,0 +1,25 @@
+.image {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 60px;
+}
+
+.example-link {
+  float: right;
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+.example-link-icon {
+  margin-right: 4px;
+  margin-left: 8px;
+}
+
+@media (max-width: 768px) {
+  .image {
+    flex: 100%;
+    margin: 24px 0 0;
+  }
+}
+
+
